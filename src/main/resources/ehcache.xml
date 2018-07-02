@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd">
+
+    <cache name="tokenCache"
+           maxElementsInMemory="1000"
+           overflowToDisk="false"
+           timeToLiveSeconds="60"
+           timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="CLOCK">
+    </cache>
+
+</ehcache>
