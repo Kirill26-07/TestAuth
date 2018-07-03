@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 public class InputController {
 
     @Autowired
-    private CacheManager cacheManager;
+    private CacheManager tokenCacheManager;
 
     @RequestMapping(value = "/auth", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public void inputSignal(@RequestParam(value = "name") String name,
                             @RequestParam(value = "password") String password) {
 
-        Cache cache = cacheManager.getCache("tokenCache");
+        Cache cache = tokenCacheManager.getCache("tokenCache");
         Element element = new Element(name, AuthorizationToken.getNewToken(name, password));
         cache.put(element);
         System.out.println(cache.get(name).getObjectValue());
