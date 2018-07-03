@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.auth.AuthorizationToken;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
@@ -15,11 +16,13 @@ public class InputController {
 
     @RequestMapping(value = "/auth", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public void inputSignal(@RequestParam(value = "name") String name) {
+    public void inputSignal(@RequestParam(value = "name") String name,
+                            @RequestParam(value = "password") String password) {
+
         Cache cache = cacheManager.getCache("tokenCache");
-        Element element = new Element(name, name + 123);
+        Element element = new Element(name, AuthorizationToken.getNewToken(name, password));
         cache.put(element);
-        System.out.println(cache.get(name));
+        System.out.println(cache.get(name).getObjectValue());
     }
 
 }
