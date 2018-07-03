@@ -22,4 +22,5 @@ public class InputController {
         cache.put(element);
         System.out.println(cache.get(name));
     }
+
 }
