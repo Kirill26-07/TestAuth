@@ -11,24 +11,24 @@ import org.springframework.context.annotation.Configuration;
 @EnableCaching
 public class CacheConfig {
 
-      @Bean(destroyMethod="shutdown")
-      public CacheManager ehCacheManager() {
-          CacheConfiguration cacheConfiguration = new CacheConfiguration();
-          cacheConfiguration.setName("tokenCache");
-          cacheConfiguration.setMaxEntriesLocalHeap(1000);
-          cacheConfiguration.setTimeToIdleSeconds(0);
-          cacheConfiguration.setTimeToLiveSeconds(60);
-          cacheConfiguration.setMemoryStoreEvictionPolicy("CLOCK");
+    @Bean(destroyMethod="shutdown")
+    public CacheManager ehCacheManager() {
+        CacheConfiguration cacheConfiguration = new CacheConfiguration();
+        cacheConfiguration.setName("tokenCache");
+        cacheConfiguration.setMaxEntriesLocalHeap(1000);
+        cacheConfiguration.setTimeToIdleSeconds(60);
+        cacheConfiguration.setTimeToLiveSeconds(60);
+        cacheConfiguration.setMemoryStoreEvictionPolicy("CLOCK");
 
-          net.sf.ehcache.config.Configuration config = new net.sf.ehcache.config.Configuration();
-          config.addCache(cacheConfiguration);
+        net.sf.ehcache.config.Configuration config = new net.sf.ehcache.config.Configuration();
+        config.addCache(cacheConfiguration);
 
-          return CacheManager.newInstance(config);
-      }
+        return CacheManager.newInstance(config);
+    }
 
-      @Bean
-      public org.springframework.cache.CacheManager cacheManager() {
-          return new EhCacheCacheManager(ehCacheManager());
-      }
+    @Bean
+    public org.springframework.cache.CacheManager cacheManager() {
+        return new EhCacheCacheManager(ehCacheManager());
+    }
 
 }

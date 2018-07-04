@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthorizationToken {
 
-    public static String getNewToken(final String userName, final String userPassword) {
+    public String getNewToken(final String userName, final String userPassword) {
         return DigestUtils.sha256Hex(userPassword + TokenSaltConfig.TOKEN_SALT + userName);
     }
 }
