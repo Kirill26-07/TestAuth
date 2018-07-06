@@ -1,7 +1,7 @@
 package app.auth.filter;
 
 import app.auth.AuthorizationToken;
-import app.auth.CachingService;
+import app.controller.CachingService;
 import app.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

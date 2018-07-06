@@ -1,12 +1,13 @@
-package app.auth;
+package app.controller;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
-import net.sf.ehcache.store.FifoPolicy;
-import net.sf.ehcache.store.Policy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import javax.annotation.PostConstruct;
 
 @Service
@@ -32,8 +33,13 @@ public class CachingService {
         return tokenCache.isKeyInCache(authorizationToken);
     }
 
-    public void clean() {
-        tokenCache.removeAll();
-    }
+    @RestController
+    public class CacheController {
 
+        @RequestMapping(value = "/api/cache/clean")
+        public void clean() {
+            tokenCache.removeAll();
+        }
+
+    }
 }

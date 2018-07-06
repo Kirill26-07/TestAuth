@@ -2,7 +2,6 @@ package app.auth.entity;
 
 import lombok.*;
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "public")

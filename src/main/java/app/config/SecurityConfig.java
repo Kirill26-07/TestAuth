@@ -2,7 +2,7 @@ package app.config;
 
 import app.auth.filter.CustomAuthenticationProvider;
 import app.auth.filter.CustomFilter;
-import app.auth.filter.MyBasicAuthenticationEntryPoint;
+import app.auth.filter.CustomAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private MyBasicAuthenticationEntryPoint authenticationEntryPoint;
+    private CustomAuthenticationEntryPoint authenticationEntryPoint;
 
     @Autowired
     private CustomAuthenticationProvider authProvider;
