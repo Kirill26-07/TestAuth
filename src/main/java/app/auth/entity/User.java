@@ -2,6 +2,7 @@ package app.auth.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "public")
@@ -21,9 +22,9 @@ public class User {
     private String password;
 
     @Column(name = "roles")
-    private String[] roles;
+    private String roles;
 
     @Column(name = "isblocked")
-    private boolean isBlocked;
+    private Boolean isBlocked;
 
 }

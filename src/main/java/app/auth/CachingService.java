@@ -3,6 +3,8 @@ package app.auth;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
+import net.sf.ehcache.store.FifoPolicy;
+import net.sf.ehcache.store.Policy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
@@ -26,6 +28,7 @@ public class CachingService {
     }
 
     public boolean isAuthenticate(final String authorizationToken) {
+        tokenCache.evictExpiredElements();
         return tokenCache.isKeyInCache(authorizationToken);
     }
 
