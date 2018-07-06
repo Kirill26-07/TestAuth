@@ -10,4 +10,5 @@ public class AuthorizationToken {
     public String getNewToken(final String userName, final String userPassword) {
         return DigestUtils.sha256Hex(userPassword + TokenSaltConfig.TOKEN_SALT + userName);
     }
+
 }

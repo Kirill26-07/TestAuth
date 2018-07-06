@@ -1,7 +1,6 @@
 package app.auth.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
